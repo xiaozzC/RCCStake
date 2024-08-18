@@ -52,10 +52,37 @@
 1. **初始化合约**
    调用 `initialize` 函数来初始化合约，传入 RCC 代币地址、起始区块号、结束区块号和每个区块奖励的 RCC 数量。
 
-   ```solidity
    function initialize(
        IERC20 _RCC,
        uint256 _startBlock,
        uint256 _endBlock,
        uint256 _RCCPerBlock
    ) public initializer;
+
+2. **存入代币**
+    使用 deposit 函数将代币存入合约。此操作将更新用户在指定池中的质押量，并根据权重计算 RCC 奖励。
+
+    function deposit(uint256 _pid, uint256 _amount) public;   
+
+3. **存入代币**
+    使用 deposit 函数将代币存入合约以获取 RCC 奖励。
+
+    function deposit(uint256 _pid, uint256 _amount) public;
+
+4. **请求提取**
+    使用 requestUnstake 函数请求提取质押代币。
+
+    function requestUnstake(uint256 _pid, uint256 _amount) public;
+
+5. **领取奖励**
+    使用 claim 函数领取 RCC 奖励。
+
+    function claim(uint256 _pid) public;
+
+
+安全注意事项
+请确保合约部署在安全的环境中，并且所有管理员操作都需要通过合适的权限进行控制。
+在使用合约之前，请务必对其进行充分的测试以确保合约的功能和安全性。
+
+许可证
+本合约使用 MIT 许可证。
